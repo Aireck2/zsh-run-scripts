@@ -27,4 +27,4 @@ function scripts::run {
 }
 
 zle -N scripts::run
-bindkey '^Xr' scripts::run
+bindkey '^Xy' scripts::run
