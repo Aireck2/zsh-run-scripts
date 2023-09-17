@@ -23,7 +23,7 @@ function scripts::run {
         return
     fi
 
-    env "${runner} ${command}" && zle accept-line
+    env $runner $command && zle accept-line
 }
 
 zle -N scripts::run

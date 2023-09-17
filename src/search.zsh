@@ -72,33 +72,28 @@ function search::runner {
     local runner
     runner="${default_package_name}"
     if [ "$(package-lock::exist)" -eq 1 ]; then
-        message_info "Found package-lock.json"
         runner="npm"
         echo "${runner}"
         return
     else
     fi
     if [ "$(yarn-lock::exist)" -eq 1 ]; then
-        message_info "Found yarn.lock"
         runner="yarn"
         echo "${runner}"
         return
     else
     fi
     if [ "$(pnpm-lock::exist)" -eq 1 ]; then
-        message_info "Found pnpm-lock.yaml"
         runner="pnpm"
         echo "${runner}"
         return
     else
     fi
     if [ "$(bun-lock::exist)" -eq 1 ]; then
-        message_info "Found bun.lockb"
         runner="bun"
         echo "${runner}"
         return
     else
-        message_info "Not found any package lock file. Running default"
         echo "${runner}"
         return
     fi
