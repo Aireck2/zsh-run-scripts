@@ -69,32 +69,20 @@ function search::scripts {
 }
 
 function search::runner {
-    local runner
-    runner="${default_package_name}"
     if [ "$(package-lock::exist)" -eq 1 ]; then
-        runner="npm"
-        echo "${runner}"
+        echo "npm"
+        return
+    elif [ "$(yarn-lock::exist)" -eq 1 ]; then
+        echo "yarn"
+        return
+    elif [ "$(pnpm-lock::exist)" -eq 1 ]; then
+        echo "pnpm"
+        return
+    elif [ "$(bun-lock::exist)" -eq 1 ]; then
+        echo "bun"
         return
     else
-    fi
-    if [ "$(yarn-lock::exist)" -eq 1 ]; then
-        runner="yarn"
-        echo "${runner}"
-        return
-    else
-    fi
-    if [ "$(pnpm-lock::exist)" -eq 1 ]; then
-        runner="pnpm"
-        echo "${runner}"
-        return
-    else
-    fi
-    if [ "$(bun-lock::exist)" -eq 1 ]; then
-        runner="bun"
-        echo "${runner}"
-        return
-    else
-        echo "${runner}"
+        echo "yarn"
         return
     fi
 }
