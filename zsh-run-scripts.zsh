@@ -18,6 +18,7 @@ function scripts::run {
     local runner
     runner="$(search::runner)"
     command="$(search::scripts)"
+    echo "Running: ${runner} $(${runner} -v)"
 
     if [ -z "${command}" ]; then
         return
